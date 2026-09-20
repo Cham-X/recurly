@@ -1,4 +1,24 @@
 {
-  "name": "recurlly",
-  "displayName": "recurlly"
+  "expo": {
+    "name": "recurlly",
+    "slug": "recurlly",
+    "version": "0.0.1",
+    "scheme": "recurlly",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "plugins": [
+      "expo-router",
+      ["expo-font",{"fonts": [
+        "./assets/fonts/PlusJakartaSans-Bold.ttf",
+        "./assets/fonts/PlusJakartaSans-ExtraBold.ttf",
+        "./assets/fonts/PlusJakartaSans-Light.ttf",
+        "./assets/fonts/PlusJakartaSans-Medium.ttf",
+        "./assets/fonts/PlusJakartaSans-Regular.ttf",
+        "./assets/fonts/PlusJakartaSans-SemiBold.ttf"
+      ]}]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
 }
