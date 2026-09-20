@@ -1,4 +1,14 @@
 {
-  "name": "recurlly",
-  "displayName": "recurlly"
+  "expo": {
+    "name": "recurlly",
+    "slug": "recurlly",
+    "version": "0.0.1",
+    "scheme": "recurlly",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "plugins": ["expo-router"],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
 }
