@@ -28,20 +28,22 @@ declare global {
         color?: string;
     }
 
-    interface SubscriptionCardProps extends Omit<Subscription, "id"> {
-        expanded: boolean;
-        onPress: () => void;
-        onCancelPress?: () => void;
-        isCancelling?: boolean;
+    interface SubscriptionCardProps extends Omit<Subscription, 'id'> {
+      expanded: boolean;
+      onPress: () => void;
+      onCancelPress?: () => void;
+      isCancelling?: boolean;
     }
 
-    interface UpcomingSubscription {
+    interface UpcomingSubscriptionProps {
+      data: {
         id: string;
         icon: ImageSourcePropType;
         name: string;
         price: number;
         currency?: string;
         daysLeft: number;
+      };
     }
 
     interface UpcomingSubscriptionCardProps
