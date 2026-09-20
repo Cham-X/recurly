@@ -1,5 +1,4 @@
 import { icons } from "./icons";
-import { UpcomingSubscriptionProps } from '@/type';
 
 export const tabs: AppTab[] = [
     { name: "index", title: "Home", icon: icons.home },
@@ -17,7 +16,7 @@ export const HOME_BALANCE = {
     nextRenewalDate: "2026-03-18T09:00:00.000Z",
 };
 
-export const UPCOMING_SUBSCRIPTIONS: UpcomingSubscriptionProps[] = [
+export const UPCOMING_SUBSCRIPTIONS: UpcomingSubscription[] = [
   {
     id: 'spotify',
     icon: icons.spotify,

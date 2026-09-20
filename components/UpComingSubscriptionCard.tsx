@@ -1,5 +1,5 @@
 import { Image, Text, View } from 'react-native';
-import { UpcomingSubscriptionProps } from '@/type';
+import { UpcomingSubscriptionCardProps } from '@/type';
 import { formatCurrency } from '@/lib/utils';
 
 const UpComingSubscriptionCard = ({
@@ -8,7 +8,7 @@ const UpComingSubscriptionCard = ({
   daysLeft,
   icon,
   currency,
-}: UpcomingSubscriptionProps) => {
+}: UpcomingSubscriptionCardProps) => {
   return (
     <View className="upcoming-card">
       <View className="upcoming-row">
