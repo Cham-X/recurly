@@ -6,8 +6,24 @@ import {
   formatSubscriptionDateTime,
 } from '@/lib/utils';
 import clsx from 'clsx';
+import {  SubscriptionCardProps } from '@/type';
 
-const SubscriptionCard = ({ name, price, currency, icon, billing, color, category, plan, renewalDate, expanded, onPress, paymentMethod, startDate, status}: SubscriptionCardProps) => {
+const SubscriptionCard = ({
+  name,
+  price,
+  currency,
+  icon,
+  billing,
+  color,
+  category,
+  plan,
+  renewalDate,
+  expanded,
+  onPress,
+  paymentMethod,
+  startDate,
+  status,
+}: SubscriptionCardProps) => {
   return (
     <Pressable
       onPress={onPress}

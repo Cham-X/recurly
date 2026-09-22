@@ -25,6 +25,7 @@ export interface Subscription {
   billing: string;
   renewalDate?: string;
   color?: string;
+  frequency: string;
 }
 
 export interface SubscriptionCardProps extends Omit<Subscription, 'id'> {
