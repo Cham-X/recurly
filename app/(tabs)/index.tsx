@@ -4,7 +4,7 @@ import { SafeAreaView as RNSafeAreaView } from 'react-native-safe-area-context';
 import { styled } from 'nativewind';
 import { useState } from 'react';
 import dayjs from 'dayjs';
-
+import CreateSubscriptionModal from '@/components/CreateSubscriptionModal';
 import images from '@/constants/images';
 import {
   HOME_BALANCE,
@@ -14,25 +14,42 @@ import {
 } from '@/constants/data';
 import { icons } from '@/constants/icons';
 import { formatCurrency } from '@/lib/utils';
-
 import ListHeading from '@/components/ListHeading';
 import UpComingSubscriptionCard from '@/components/UpComingSubscriptionCard';
 import SubscriptionCard from '@/components/SubscriptionCard';
+import { useSubscriptionStore } from '@/lib/subscriptionStore';
+import { Subscription } from '@/type';
+import { useUser } from '@clerk/expo';
 
 const SafeAreaView = styled(RNSafeAreaView);
 
 export default function App() {
+  const { user } = useUser();
   const [expandedSubscriptionId, setExpandedSubscriptionId] = useState<
     string | null
   >(null);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
+  const { subscriptions, addSubscription } = useSubscriptionStore();
+
+
   const handleSubscriptionPress = (item: Subscription) => {
     setExpandedSubscriptionId(currentId =>
       currentId === item.id ? null : item.id,
     );
   };
+
+  const handleCreateSubscription = (newSubscription: Subscription) => {
+    addSubscription(newSubscription);
+  };
+
+  // Get user display name: firstName, fullName, or email
+  const displayName =
+    user?.firstName ||
+    user?.fullName ||
+    user?.emailAddresses[0]?.emailAddress ||
+    'User';
 
   return (
     <SafeAreaView className="flex-1 bg-background p-5">
@@ -42,9 +59,13 @@ export default function App() {
             {/* Header */}
             <View className="home-header">
               <View className="home-user">
-                <Image source={images.avatar} className="home-avatar" />
-
-                <Text className="home-user-name">{HOME_USER.name}</Text>
+                <Image
+                  source={
+                    user?.imageUrl ? { uri: user.imageUrl } : images.avatar
+                  }
+                  className="home-avatar"
+                />
+                <Text className="home-user-name">{displayName}</Text>
               </View>
 
               <Pressable onPress={() => setIsModalVisible(true)}>
@@ -107,6 +128,12 @@ export default function App() {
           <Text className="home-empty-state">No subscriptions yet.</Text>
         }
         contentContainerClassName="pb-30"
+      />
+
+      <CreateSubscriptionModal
+        visible={isModalVisible}
+        onClose={() => setIsModalVisible(false)}
+        onSubmit={handleCreateSubscription}
       />
     </SafeAreaView>
   );
